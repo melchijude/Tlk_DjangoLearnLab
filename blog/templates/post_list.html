@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Posts{% endblock %}
+
+{% block content %}
+<h2>All Blog Posts</h2>
+
+<ul style="list-style-type: none; padding: 0;">
+    {% for post in posts %}
+        <li style="background-color: #f1f1f1; margin-bottom: 1rem; padding: 1rem; border-radius: 8px;">
+            <h3 style="margin-top: 0;">{{ post.title }}</h3>
+            <p>{{ post.content|truncatewords:20 }}</p>
+            <small>Published on: {{ post.created_at|date:"F j, Y, g:i a" }}</small>
+        </li>
+    {% empty %}
+        <p>No posts available yet.</p>
+    {% endfor %}
+</ul>
+{% endblock %}
